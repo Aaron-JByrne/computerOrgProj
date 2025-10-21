@@ -35,7 +35,8 @@ public class Main {
                 memory.getTotal() / 1e9,
                 (memory.getTotal() - memory.getAvailable()) / 1e9);
 
-
         System.out.println();
+
+        System.out.println(si.getHardware().getGraphicsCards());
     }
 }
