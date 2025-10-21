@@ -1,4 +1,4 @@
-package com.example;
+package org.example;
 
 import oshi.SystemInfo;
 import oshi.hardware.CentralProcessor;
@@ -19,5 +19,8 @@ public class Main {
         System.out.printf("Memory: %.2f GB total, %.2f GB used%n",
                 memory.getTotal() / 1e9,
                 (memory.getTotal() - memory.getAvailable()) / 1e9);
+
+
+        System.out.println();
     }
 }
