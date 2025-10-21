@@ -1,5 +1,7 @@
 package org.example;
 
+import java.net.InetAddress;
+
 import oshi.SystemInfo;
 import oshi.hardware.CentralProcessor;
 import oshi.hardware.GlobalMemory;
@@ -7,6 +9,19 @@ import oshi.software.os.OperatingSystem;
 
 public class Main {
     public static void main(String[] args) {
+        try {
+
+            // get system name
+            String SystemName
+                = InetAddress.getLocalHost().getHostName();
+
+            // SystemName stores the name of the system
+            System.out.println("System Name : "
+                               + SystemName);
+        }
+        catch (Exception E) {
+            System.err.println(E.getMessage());
+        }
         SystemInfo si = new SystemInfo();
         OperatingSystem os = si.getOperatingSystem();
         CentralProcessor cpu = si.getHardware().getProcessor();
