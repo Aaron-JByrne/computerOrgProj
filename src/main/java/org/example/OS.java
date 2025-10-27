@@ -27,16 +27,6 @@ public class OS{
         this.baseboard = computerSystem.getBaseboard();
         //this.osProcess = os.getCurrentProcess();
 
-        /*
-        for(OSSession session : os.getSessions()) {
-            System.out.println(session);
-            System.out.println(session.getUserName()); //user name
-            System.out.println(session.getTerminalDevice()); //shell?
-            Instant logininstant = Instant.ofEpochMilli(session.getLoginTime());
-            System.out.println(logininstant);
-            //Instant currentinstant = Instant.now();
-            //System.out.println(currentinstant);
-        }*/
     }
     public void displayInfo() {
         System.out.println("---Operating System---");
@@ -44,12 +34,10 @@ public class OS{
         System.out.printf("OS Manufacturer: %s\n", os.getManufacturer() );
         System.out.printf("OS Version: %s\n", osVersionInfo.getVersion() );
         System.out.printf("OS Build number: %s\n", osVersionInfo.getBuildNumber() );
+        System.out.printf("Architecture: %s\n", System.getProperty("os.arch"));
         System.out.printf("Bitness: %d\n", os.getBitness() );
         System.out.printf("Uptime: %s\n", timeformat(os.getSystemUptime())); // hhh:mm:ss
         System.out.printf("Process Count: %d\n", os.getProcessCount());
-
-        //System.out.println(os.)
-
 
         System.out.println();
     }
