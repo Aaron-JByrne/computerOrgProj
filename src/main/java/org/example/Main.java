@@ -3,12 +3,28 @@ package org.example;
 import java.net.InetAddress;
 
 import oshi.SystemInfo;
-import oshi.hardware.CentralProcessor;
-import oshi.hardware.GlobalMemory;
+import oshi.software.os.OSProcess;
 import oshi.software.os.OperatingSystem;
+import oshi.hardware.*;
+
+import oshi.software.os.OperatingSystem;
+import oshi.software.os.OperatingSystem.OSVersionInfo;
+import oshi.SystemInfo;
 
 public class Main {
     public static void main(String[] args) {
+        OS os = new OS(new SystemInfo());
+        os.displayInfo();
+
+        Motherboard mobo = new Motherboard(new SystemInfo());
+        mobo.displayInfo();
+
+        Users users = new Users(new SystemInfo());
+        users.displayInfo();
+
+
+
+        /*
         try {
 
             // get system name
@@ -38,5 +54,7 @@ public class Main {
         System.out.println();
 
         System.out.println(si.getHardware().getGraphicsCards());
+        System.out.println()
+         */
     }
 }
