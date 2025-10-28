@@ -3,21 +3,9 @@ package org.example;
 import oshi.SystemInfo;
 import oshi.hardware.HardwareAbstractionLayer;
 import oshi.hardware.NetworkIF;
-
-import java.util.HashMap;
 import java.util.List;
-import java.util.Map;
 
 public class NetworkInfo{
-
-    private static final Map<Integer, String> IF_TYPE_MAP = new HashMap<>();
-
-    static{
-        IF_TYPE_MAP.put(6, "Ethernet");
-        IF_TYPE_MAP.put(71, "Wifi");
-        IF_TYPE_MAP.put(72, "Bluetooth");
-        IF_TYPE_MAP.put(0, "Unknown");
-    }
 
     public void printNetworkInfo(){
         SystemInfo si = new SystemInfo();
@@ -42,7 +30,7 @@ public class NetworkInfo{
 
             // Only display active interfaces
             if(hasIPv4 || hasIPv6){
-                System.out.println(" ---Interface Type : " + getInterfaceTypeName(net.getIfType()) + "---");
+                System.out.println(" ---Interface Type : " + getInterfaceTypeName(net) + "---");
                 System.out.println("Interface name     : " + net.getName());
                 System.out.println("Display Name       : " + net.getDisplayName());
                 System.out.println("MAC address        : " + net.getMacaddr());
@@ -65,8 +53,21 @@ public class NetworkInfo{
         }
     }
     // convert interface type code to readable names
-    private String getInterfaceTypeName(int ifType){
-        return IF_TYPE_MAP.getOrDefault(ifType, "Unknown (" + ifType + ")");
+    private String getInterfaceTypeName(NetworkIF net) {
+        int type = net.getIfType();
+        String name = net.getName().toLowerCase();
+        String display = net.getDisplayName().toLowerCase();
+
+        if (name.contains("bth") || display.contains("bluetooth")) {
+            return "Bluetooth";
+        } else if (type == 71 || name.contains("wlan") || display.contains("wifi")) {
+            return "Wi-Fi";
+        } else if (type == 6) {
+            return "Ethernet";
+        } else if (type == 24) {
+            return "Loopback";
+        }
+        return "Unknown (" + type + ")";
     }
 }
 
