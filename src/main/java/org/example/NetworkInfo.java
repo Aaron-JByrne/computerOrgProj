@@ -25,7 +25,7 @@ class NetworkInfo{
 
 
                 // Only display active interfaces
-                if(hasIPv4 && hasIPv6){
+                if(hasIPv4 || hasIPv6){
                    System.out.println("Interface name   : " + net.getName());
                    System.out.println("Display Name     : " + net.getDisplayName());
                    System.out.println("MAC address      : " + net.getMacaddr());
