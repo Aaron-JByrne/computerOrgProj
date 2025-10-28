@@ -22,7 +22,6 @@ public class StorageInfo {
             System.out.println("Disk Model               : " + disk.getModel());
             System.out.println("Disk Partitions          : " + disk.getPartitions());
             System.out.println("Disk Serial              : " + disk.getSerial());
-            //System.out.println("Length of Disk Queue     : " + disk.getCurrentQueueLength());
             System.out.println("Number of writes to disk : " + disk.getWrites());
             System.out.println("Number of reads to disk  : " + disk.getReads());
 
@@ -34,6 +33,7 @@ public class StorageInfo {
             } else {
                 System.out.println("Time Disk was updated: unavailable");
             }
+            System.out.println();
 
         }
         System.out.println();
@@ -50,6 +50,7 @@ public class StorageInfo {
             System.out.println("Total Space  : " + file.getTotalSpace() / (1024 * 1024 * 1024) + " GB");
             System.out.println("Usable Space : " + file.getUsableSpace() / (1024 * 1024 * 1024) + " GB");
             System.out.println("Used Space   : "  + ((file.getTotalSpace() / (1024 * 1024 * 1024)) - (file.getUsableSpace() / (1024 * 1024 * 1024)) + " GB"));
+            System.out.println();
         }
     }
 }
