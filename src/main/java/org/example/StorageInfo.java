@@ -6,7 +6,7 @@ import oshi.hardware.HWDiskStore;
 import oshi.software.os.FileSystem;
 import oshi.software.os.OSFileStore;
 
-class StorageInfo {
+public class StorageInfo {
     public void printStorageInfo(){
         SystemInfo si = new SystemInfo();
         HardwareAbstractionLayer hal = si.getHardware();
@@ -22,7 +22,7 @@ class StorageInfo {
             System.out.println("Disk Model               : " + disk.getModel());
             System.out.println("Disk Partitions          : " + disk.getPartitions());
             System.out.println("Disk Serial              : " + disk.getSerial());
-            System.out.println("Length of Disk Queue     : " + disk.getCurrentQueueLength());
+            //System.out.println("Length of Disk Queue     : " + disk.getCurrentQueueLength());
             System.out.println("Number of writes to disk : " + disk.getWrites());
             System.out.println("Number of reads to disk  : " + disk.getReads());
 
