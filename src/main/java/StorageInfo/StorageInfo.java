@@ -1,4 +1,6 @@
-package org.example;
+package StorageInfo;
+
+import javax.net.ssl.SSLProtocolException;
 
 import oshi.SystemInfo;
 import oshi.hardware.HardwareAbstractionLayer;
@@ -6,9 +8,15 @@ import oshi.hardware.HWDiskStore;
 import oshi.software.os.FileSystem;
 import oshi.software.os.OSFileStore;
 
-class StorageInfo {
+public class StorageInfo {
+
+    private SystemInfo si;
+
+    public StorageInfo(SystemInfo si) {
+        this.si = si;
+    }
+
     public void printStorageInfo(){
-        SystemInfo si = new SystemInfo();
         HardwareAbstractionLayer hal = si.getHardware();
 
         System.out.println("===== STORAGE INFORMATION =====");
@@ -22,7 +30,6 @@ class StorageInfo {
             System.out.println("Disk Model               : " + disk.getModel());
             System.out.println("Disk Partitions          : " + disk.getPartitions());
             System.out.println("Disk Serial              : " + disk.getSerial());
-            System.out.println("Length of Disk Queue     : " + disk.getCurrentQueueLength());
             System.out.println("Number of writes to disk : " + disk.getWrites());
             System.out.println("Number of reads to disk  : " + disk.getReads());
 
@@ -34,6 +41,7 @@ class StorageInfo {
             } else {
                 System.out.println("Time Disk was updated: unavailable");
             }
+            System.out.println();
 
         }
         System.out.println();
@@ -50,6 +58,7 @@ class StorageInfo {
             System.out.println("Total Space  : " + file.getTotalSpace() / (1024 * 1024 * 1024) + " GB");
             System.out.println("Usable Space : " + file.getUsableSpace() / (1024 * 1024 * 1024) + " GB");
             System.out.println("Used Space   : "  + ((file.getTotalSpace() / (1024 * 1024 * 1024)) - (file.getUsableSpace() / (1024 * 1024 * 1024)) + " GB"));
+            System.out.println();
         }
     }
 }
