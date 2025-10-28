@@ -6,8 +6,8 @@ import oshi.hardware.HWDiskStore;
 import oshi.software.os.FileSystem;
 import oshi.software.os.OSFileStore;
 
-public class StorageInfo {
-    public static void main(String[] args) {
+class StorageInfo {
+    public void printStorageInfo(){
         SystemInfo si = new SystemInfo();
         HardwareAbstractionLayer hal = si.getHardware();
 
@@ -25,6 +25,7 @@ public class StorageInfo {
             System.out.println("Length of Disk Queue     : " + disk.getCurrentQueueLength());
             System.out.println("Number of writes to disk : " + disk.getWrites());
             System.out.println("Number of reads to disk  : " + disk.getReads());
+
 
             long ts = disk.getTimeStamp();
             if (ts > 0) {

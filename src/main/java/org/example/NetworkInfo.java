@@ -5,8 +5,8 @@ import oshi.hardware.HardwareAbstractionLayer;
 import oshi.hardware.NetworkIF;
 import java.util.List;
 
-public class NetworkInfo{
-    public static void main(String[] args){
+class NetworkInfo{
+    public void printNetworkInfo(){
         SystemInfo si = new SystemInfo();
         HardwareAbstractionLayer hal = si.getHardware();
 

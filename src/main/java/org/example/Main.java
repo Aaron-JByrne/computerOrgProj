@@ -38,5 +38,11 @@ public class Main {
         System.out.println();
 
         System.out.println(si.getHardware().getGraphicsCards());
+
+        NetworkInfo networkInfo = new NetworkInfo();
+        networkInfo.printNetworkInfo();
+
+        StorageInfo storageInfo = new StorageInfo();
+        storageInfo.printStorageInfo();
     }
 }
