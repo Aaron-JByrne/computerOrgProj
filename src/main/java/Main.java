@@ -4,6 +4,7 @@
 // import oshi.hardware.GlobalMemory;
 // import oshi.software.os.OperatingSystem;
 import Battery.*;
+import Memory.*;
 import oshi.SystemInfo;
 
 public class Main {
@@ -42,5 +43,8 @@ public class Main {
         SystemInfo si = new SystemInfo();
         Battery battery = new Battery(si);
         battery.printBatteryInformation();
+
+        Memory memory = new Memory(si);
+        memory.printMemoryInformation();
     }
 }
