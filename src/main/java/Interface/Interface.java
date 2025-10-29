@@ -10,6 +10,7 @@ import Users.*;
 import OS.*;
 import MotherBoard.*;
 import oshi.SystemInfo;
+import PCI.pci;
 
 /**
  * Interface
@@ -34,16 +35,15 @@ public class Interface{
             System.out.println("7. MotherBoard"); 
             System.out.println("8. Opersating system"); 
             System.out.println("9. Users and sessions"); 
+            System.out.println("10. PCI devices"); 
             System.out.print("Enter your choice: "); 
-
-            System.out.print("\033[H\033[2J");
-            System.out.flush();
+            System.out.println();
             int choice = 0;
             try {
                 choice = scanner.nextInt();
             }
             catch (Exception e)
-        {
+            {
                 System.out.println("You entered a value that cannot be casted into an int: " + e.getMessage());
                 continue;
             }
@@ -77,6 +77,9 @@ public class Interface{
                 }
                 case 9 -> {
                     new Users(si).displayInfo();
+                }
+                case 10 -> {
+                    new pci().printPCIinfo();
                 }
             } 
         }
