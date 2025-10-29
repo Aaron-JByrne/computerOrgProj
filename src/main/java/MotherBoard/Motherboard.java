@@ -23,7 +23,7 @@ public class Motherboard {
     }
 
     public void displayInfo(){
-        System.out.println("---Motherboard---");
+        System.out.println("=== Motherboard ===");
 
         System.out.println();
 
@@ -39,10 +39,7 @@ public class Motherboard {
         System.out.printf("Baseboard Model: %s\n", baseboard.getModel());
         System.out.printf("Baseboard Serial Number: %s\n", baseboard.getSerialNumber());
         System.out.printf("Hardware UUID: %s\n", cs.getHardwareUUID());
-
-
-
-
-
+        
+        System.out.println();
     }
 }

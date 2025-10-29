@@ -25,6 +25,7 @@ public class Interface{
         SystemInfo si = new SystemInfo(); 
         while (true) {
             Scanner scanner = new Scanner(System.in);
+            System.out.println();
             System.out.println("=========== Endor Sysinfo ==========="); 
             System.out.println("1. CPU");
             System.out.println("2. Memory"); 

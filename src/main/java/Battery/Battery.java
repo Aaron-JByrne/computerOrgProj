@@ -1,6 +1,8 @@
 package Battery;
 
 import oshi.hardware.PowerSource;
+
+import java.sql.ResultSet;
 import java.util.List;
 import oshi.SystemInfo;
 
@@ -18,9 +20,10 @@ public class Battery {
             System.out.println("Battery Life: " + getPercentageFormattedString(source));
             System.out.println(getTimeRemainingString(source));
             System.out.println("Status: " + isChargingString(source));
+            System.out.println();
         } 
     }
-    
+
     private String isChargingString(PowerSource source) {
         if (source.isCharging()) {
             return "Charging";
@@ -39,12 +42,18 @@ public class Battery {
             }
         }
         double result = time/60.0;
-        return "Time remaining: " + result + "min";
-         
+        return "Time remaining: " + Math.round(result) + "min";
+
     }
 
     private String getPercentageFormattedString(PowerSource powerSource) {
         double percentage = powerSource.getRemainingCapacityPercent() * 100;
+
+        // for windows workaround 
+        if (percentage == 100.0 && powerSource.getTimeRemainingInstant() < 0 && powerSource.isCharging()) {
+            return "[##########] (Fully Charged / Unknown)";
+        }
+
         int rounded = (int) Math.round(percentage);
         StringBuilder bar = new StringBuilder("[");
         int filled = rounded / 10;
@@ -56,5 +65,5 @@ public class Battery {
 
         return String.format("%s %d%%", bar, rounded);    
     }
-    
+
 }
